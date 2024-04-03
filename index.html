@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulator</title>
+</head>
+<body>
+    <style>
+        .textWhite{
+            color: white;
+        }
+        .textPurple{
+            color: purple;
+        }
+    </style>
+    <h1 id="text">DOM Manipulation</h1>
+
+    <!-- create 2 buttons; red and blue and id should be red and blue-->
+    <button id="red">
+        Red
+    </button>
+
+    <button id="blue">
+        Blue
+    </button>
+
+    <div>
+        <button id="white">
+            white
+        </button>
+    
+        <button id="purple">
+            Purple
+        </button>
+    </div>
+    
+    <div>
+        <button id="set">
+            suprise me
+        </button>
+        <button id="reset">
+            dont suprise me
+        </button>
+    </div>
+    <!-- select two buttons using js -->
+    <!-- listen on click events on each button -->
+    <script>
+        function consoleRed(){
+            console.log("Red clicked")
+            document.body.style.backgroundColor = 'red';     
+        }  
+
+        function consoleBlue(){
+            console.log("Blue clicked")
+            document.body.style.backgroundColor = 'blue';
+        }
+
+        function consolewhite(){
+            console.log("white clicked")
+            document.getElementById('text').classList.add('textWhite'); // Add .textWhite class to h1
+        }
+
+        function consolepurple(){
+            console.log("purple clicked")
+            document.getElementById('text').classList.add('textPurple');
+            // h1_text.setAttribute('class', 'textPurple')
+            // h1_text.classList.remove('textWhite');
+            // h1_text.classList.add('textPurple')
+        }
+
+        const redbutton = document.getElementById('red') 
+        const bluebutton = document.getElementById('blue') 
+
+        console.log("redbutton")
+        console.log("bluebutton")
+        // when redbutton is clicked: console "red clicked"
+        // when bluebutton is clicked: console "blue clicked"
+        redbutton.addEventListener('click', consoleRed)
+        bluebutton.addEventListener('click', consoleBlue)
+        // another way
+        // bluebutton.addEventListener('click', function(){
+        //     console.log("Blue")
+        // })
+        // whenever i click rebtn change the backgroung color to red
+        // whenever i click bluetn change the backgroung color to blue
+
+
+        // task 7: create two classes white aand purple; when white button is clicked h1 add ".textWhite" to the class of h1
+        // task 7: create two classes white aand purple; when purple button is clicked h1 add ".textPurple" to the class of h1
+
+        const whitebutton = document.getElementById('white') 
+        const purplebutton = document.getElementById('purple') 
+
+        whitebutton.addEventListener('click', consolewhite)
+        purplebutton.addEventListener('click', consolepurple)
+
+        // const h1_text = document.getElementById("text")
+
+
+        // 1. add button "suprise me"
+        // 2. when the btn is clicked show a text below "you're suprised"
+        // 3. add button "dont suprise me"
+        // 4. when the btn is clicked hide the step 2
+
+        const setButton = document.getElementById('set')
+        setButton.addEventListener('click', consoleSet);
+
+        function consoleSet() {
+               console.log('Surprise Me')
+               // using the dom concept i want to add a new paragraph
+               const newParagraph = document.createElement('p');
+               newParagraph.textContent = 'Surprise Me';
+               document.body.appendChild(newParagraph);
+          }
+
+        const resetButton = document.getElementById('reset')
+        resetButton.addEventListener('click', consoleReset);
+
+        function consoleReset() {
+               console.log('Don\'t Surprise Me')
+               // using the dom concept i want to remove the new paragraph
+               document.querySelector('p').remove();
+          }
+
+
+    </script>
+</body>
+</html>
+
